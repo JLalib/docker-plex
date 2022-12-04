@@ -1,0 +1,30 @@
+# Note: 192.168.1.xxx is an example network, you must update all these to match your own.
+version: "2.1"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+    networks:
+      macvlan_NET:                      # <-- MACVlan Name no need to change, but do not exist previosly.
+        ipv4_address: 192.168.1.205     # <-- Update
+    volumes:
+      - /mnt/usbdrive/plex/library:/config    #USB Drive
+      - /mnt/usbdrive/plex/series:/tv         #USB Drive
+      - /mnt/usbdrive/plex/peliculas:/movies  #USB Drive
+    restart: unless-stopped
+
+networks:
+  macvlan_NET:
+    driver: macvlan
+    driver_opts:
+      parent: eth0                       # <- Update to match your NIC see your OMV WebGUI
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24            # <-- Update
+          gateway: 192.168.10.1              # <-- Update
+          ip_range: 192.168.1.0/24          # <-- Update
