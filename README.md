@@ -6,9 +6,6 @@ Cómo instalar Plex en Docker. Disfruta de un centro multimedia al completa, tus
 
 Enlace al docker-compose.yml personalizado con Red propia.
 
-docker-compose.yml
- 
----
 version: "2.1"
 services:
   plex:
