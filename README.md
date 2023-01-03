@@ -21,7 +21,7 @@ services:
       - /path/to/library:/config
       - /path/to/tvseries:/tv
       - /path/to/movies:/movies
-    restart: unless-stopped
+      restart: unless-stopped
 
 
-Vea el vídeo en Youtube.
+Vea el vídeo en Youtube: https://youtu.be/_ONiEs3YM8k
